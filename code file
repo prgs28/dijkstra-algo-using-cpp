@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+
+	int nv,ne,adjmat[20][20],weight;
+	char vert[20],v1,v2;
+	int vertnum[20];
+	cout<<"\n enter no of vertices(not > 20)";
+	cin>>nv;
+	int flag=0;int vert1,vert2;
+	cout<<"\nenter vertices: ";
+	for(int i=0;i<nv;i++)
+	{
+		cin>>vert[i];
+		vertnum[i]=i;				//makes A->1, B->2...
+	}
+	for(int i=0;i<nv;i++)
+		for(int j=0;j<nv;j++)
+			adjmat[i][j]=0;
+	cout<<"\nHow many edges?: ";
+	cin>>ne;
+	cout<<"\nenter edges:";
+	for(int i=0;i<ne;i++)
+	{
+		cout<<"for edge "<<i<<"\n-- enter first vertex: ";
+		cin>>v1;
+		for(int j=0;j<nv;j++)
+		{
+			if(vert[j]==v1)
+			{
+				vert1=i;
+				flag=1;
+			}
+		}
+		if(flag==0)
+		{
+			cout<<"\nInvalid Vertex!!";
+			exit(0);
+		}
+		cout<<<<"\n-- enter second vertex: ";
+		cin>>v2;
+		for(int j=0;j<nv;j++)
+		{
+			if(vert[j]==v2)
+			{
+				vert2=j;
+				flag=1;
+			}
+		}
+		if(flag==0)
+		{
+			cout<<"\nInvalid Vertex!!";
+			exit(0);
+		}
+		cout<<"\n-- enter weight of the edge: ";
+		cin>weight;
+		adjmat[vert1][vert2]=weight;
+	}
+	for(int i=0;i<nv;i++)
+		for(int j=0;j<nv;j++)
+			cout<<i<<j<": "<<adjmat[i][j];
+	return 0;
+
+}
